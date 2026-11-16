@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contato | Portfólio Pedro Henrique</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <h1>Entre em contato</h1>
+
+        <nav aria-label="Menu principal">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre mim</a></li>
+                <li><a href="contato.html" aria-current="page">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+
+        <!-- INFORMAÇÕES DE CONTATO -->
+<section class="mensagem-abertura">
+
+    <h2>Minhas informações de contato</h2>
+
+    <p>
+        Abaixo estão algumas informações pessoais,
+        acadêmicas e meus canais de contato.
+    </p>
+
+    <table>
+        <caption>
+            Dados pessoais e informações de contato
+        </caption>
+
+        <thead>
+            <tr>
+                <th scope="col">Informação</th>
+                <th scope="col">Descrição</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th scope="row">Nome</th>
+                <td>Pedro Henrique Silva de Queiroz</td>
+            </tr>
+
+            <tr>
+                <th scope="row">Área de interesse</th>
+                <td>Programação e desenvolvimento web</td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>
+
+        <!-- FORMULÁRIO DE CONTATO -->
+        <section class="area-contato">
+
+            <h2>Envie uma mensagem</h2>
+
+            <form
+                id="formContato"
+                class="formulario-contato"
+                onsubmit="enviarEmail(event)"
+            >
+
+                <!-- CAMPO NOME -->
+                <label for="nome">Seu nome:</label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Digite seu nome"
+                    autocomplete="name"
+                    required
+                >
+
+                <!-- CAMPO E-MAIL -->
+                <label for="email">Seu e-mail:</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Digite seu e-mail"
+                    autocomplete="email"
+                    required
+                >
+
+                <!-- SELEÇÃO DE ASSUNTO -->
+                <label for="assunto">Assunto da mensagem:</label>
+
+                <select
+                    id="assunto"
+                    name="assunto"
+                    required
+                >
+                    <option value="">Selecione um assunto</option>
+                    <option value="Dúvidas">Dúvidas</option>
+                    <option value="Oportunidades acadêmicas">Oportunidades acadêmicas</option>
+                    <option value="Oportunidades profissionais">Oportunidades profissionais</option>
+                    <option value="Projetos e parcerias">Projetos e parcerias</option>
+                    <option value="Outros assuntos">Outros assuntos</option>
+                </select>
+
+                <!-- CAMPO MENSAGEM -->
+                <label for="mensagem">Sua mensagem:</label>
+
+                <textarea
+                    id="mensagem"
+                    name="mensagem"
+                    rows="5"
+                    placeholder="Escreva sua mensagem..."
+                    required
+                ></textarea>
+
+                <!-- CAIXA DE SELEÇÃO -->
+                <div class="opcao-contato">
+
+                    <input
+                        type="checkbox"
+                        id="autorizacao"
+                        name="autorizacao"
+                        required
+                    >
+
+                    <label for="autorizacao">
+                        Confirmo que as informações fornecidas estão corretas
+                        e autorizo o envio desta mensagem.
+                    </label>
+
+                </div>
+
+                <!-- BOTÕES -->
+                <div class="botoes-contato">
+
+                    <button
+                        type="submit"
+                        id="botaoEmail"
+                    >
+                        Enviar por E-mail
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="enviarWhatsApp()"
+                    >
+                        Enviar pelo WhatsApp
+                    </button>
+
+                </div>
+
+            </form>
+        </section>
+
+    <!-- MENSAGEM FINAL -->
+<section class="mensagem-final">
+
+    <h2>Obrigado pela visita!</h2>
+
+    <p>
+        Agradeço por conhecer meu portfólio.
+        Espero que possamos trocar conhecimentos
+        e experiências.
+    </p>
+
+</section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <p>&copy; 2026 - Pedro Henrique.</p>
+
+        <p>Portfólio pessoal desenvolvido com HTML5.</p>
+
+    </footer>
+
+    <!-- BIBLIOTECA EMAILJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js"></script>
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // =====================================
+        // CONFIGURAÇÃO DO EMAILJS
+        // =====================================
+
+        emailjs.init({
+            publicKey: "uqXtyeYTdxQ7zMuNf"
+        });
+
+
+        // =====================================
+        // FUNÇÃO PARA ENVIAR POR E-MAIL
+        // =====================================
+
+        async function enviarEmail(event) {
+
+            event.preventDefault();
+
+            const formulario = document.getElementById("formContato");
+            const botao = document.getElementById("botaoEmail");
+
+            const nome = document.getElementById("nome").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const assunto = document.getElementById("assunto").value;
+            const mensagem = document.getElementById("mensagem").value.trim();
+
+            // Verifica os campos obrigatórios
+            if (!formulario.checkValidity()) {
+                formulario.reportValidity();
+                return;
+            }
+
+            // Organiza o assunto junto à mensagem
+            const mensagemCompleta =
+                "Assunto: " + assunto + "\n\n" + mensagem;
+
+            // Evita vários cliques durante o envio
+            botao.disabled = true;
+            botao.textContent = "Enviando...";
+
+            try {
+
+                // Envia os dados pelo EmailJS
+                const resposta = await emailjs.send(
+                    "Trabalho",
+                    "template_e5j1f3w",
+                    {
+                        name: nome,
+                        email: email,
+                        message: mensagemCompleta
+                    }
+                );
+
+                console.log("E-mail enviado:", resposta);
+
+                alert("Mensagem enviada com sucesso! Obrigado pelo contato.");
+
+                formulario.reset();
+
+            } catch (erro) {
+
+                console.error("Erro ao enviar mensagem:", erro);
+
+                alert(
+                    "Não foi possível enviar sua mensagem. " +
+                    "Verifique sua conexão e tente novamente."
+                );
+
+            } finally {
+
+                botao.disabled = false;
+                botao.textContent = "Enviar por E-mail";
+
+            }
+        }
+
+
+        // =====================================
+        // FUNÇÃO PARA ENVIAR PELO WHATSAPP
+        // =====================================
+
+        function enviarWhatsApp() {
+
+            const formulario = document.getElementById("formContato");
+
+            const nome = document.getElementById("nome").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const assunto = document.getElementById("assunto").value;
+            const mensagem = document.getElementById("mensagem").value.trim();
+
+            // Verifica se os campos foram preenchidos
+            if (!formulario.checkValidity()) {
+                formulario.reportValidity();
+                return;
+            }
+
+            const telefone = "5588996889772";
+
+            // Organiza a mensagem
+            const texto =
+                "Olá! Vim através do seu portfólio.\n\n" +
+                "Nome: " + nome + "\n" +
+                "E-mail: " + email + "\n" +
+                "Assunto: " + assunto + "\n\n" +
+                "Mensagem:\n" + mensagem;
+
+            // Codifica o texto para a URL
+            const textoCodificado = encodeURIComponent(texto);
+
+            // Abre o WhatsApp
+            const link =
+                "https://wa.me/" + telefone +
+                "?text=" + textoCodificado;
+
+            window.open(link, "_blank");
+
+        }
+
+    </script>
+
+</body>
+</html>
