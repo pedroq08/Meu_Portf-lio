@@ -1,0 +1,1295 @@
+
+/* =========================================
+PORTFÓLIO - PEDRO HENRIQUE
+Folha de estilos externa
+========================================= */
+
+
+/* =========================================
+1. VARIÁVEIS DE CORES
+========================================= */
+
+:root {
+    --fundo: #100607;
+    --fundo-card: rgba(37, 9, 13, 0.88);
+
+    --vinho: #450B12;
+    --vermelho-escuro: #8B0000;
+    --vermelho: #C1121F;
+    --vermelho-claro: #FF3030;
+    --vermelho-luz: #FF7777;
+
+    --branco: #FFFFFF;
+    --texto-secundario: #E8CACA;
+
+    --borda: rgba(255, 48, 48, 0.50);
+    --brilho: rgba(255, 20, 35, 0.40);
+}
+
+
+/* =========================================
+2. CONFIGURAÇÕES GERAIS
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--branco);
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    isolation: isolate;
+
+    background-color: var(--fundo);
+}
+
+
+/* =========================================
+3. IMAGEM DE FUNDO
+========================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            rgba(16, 6, 7, 0.55),
+            rgba(16, 6, 7, 0.82)
+        ),
+        url("Img/Fundo de tela.png") center / cover no-repeat;
+
+    filter: blur(4px);
+    transform: scale(1.04);
+}
+
+
+/* =========================================
+4. CABEÇALHO E MENU DE NAVEGAÇÃO
+========================================= */
+
+header {
+    background-color: rgba(16, 6, 7, 0.94);
+
+    padding: 22px;
+
+    border-bottom: 2px solid var(--vermelho);
+
+    text-align: center;
+
+    box-shadow: 0 4px 20px var(--brilho);
+}
+
+.cabecalho-com-titulo {
+    text-align: center;
+}
+
+header h1 {
+    color: var(--vermelho-claro);
+
+    margin-bottom: 18px;
+
+    font-size: 32px;
+
+    text-shadow: 0 0 15px var(--brilho);
+}
+
+nav ul {
+    list-style: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+nav a {
+    color: var(--texto-secundario);
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+    color: var(--vermelho-claro);
+}
+
+
+/* =========================================
+5. ACESSIBILIDADE E FOCO
+========================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--vermelho-luz);
+    outline-offset: 4px;
+}
+
+
+/* =========================================
+6. CONTEÚDO PRINCIPAL
+========================================= */
+
+main {
+    flex: 1;
+    padding: 40px 20px;
+}
+
+section h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: var(--vermelho-claro);
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: var(--vermelho-claro);
+    margin: 25px 0 15px;
+    font-size: 24px;
+}
+
+h3 {
+    color: var(--vermelho-luz);
+    margin-bottom: 12px;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.pagina-inicial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.conteudo-centralizado {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.pagina-inicial p {
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   7. CARTÕES GERAIS
+========================================= */
+
+.cartao,
+section.cartao,
+article.cartao {
+    width: 100%;
+    max-width: 800px;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background-color: var(--fundo-card);
+
+    border: 1px solid var(--borda);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.40);
+}
+
+.pagina-inicial .cartao {
+    max-width: 750px;
+}
+
+.pagina-inicial section {
+    text-align: center;
+}
+
+.cartao-sobre {
+    max-width: 850px;
+    text-align: center;
+}
+
+article h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cartao-sobre p {
+    text-align: left;
+}
+
+
+/* =========================================
+8. BOTÕES GERAIS
+========================================= */
+
+.botao {
+    display: inline-block;
+
+    margin-top: 15px;
+    padding: 13px 25px;
+
+    border: 1px solid var(--vermelho-claro);
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vermelho-escuro),
+        var(--vermelho)
+    );
+
+    color: var(--branco);
+    text-decoration: none;
+
+    font: inherit;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    box-shadow: 0 4px 15px var(--brilho);
+}
+
+.botao:hover {
+    background: linear-gradient(
+        135deg,
+        var(--vermelho),
+        var(--vermelho-claro)
+    );
+
+    color: var(--branco);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 5px 22px var(--brilho);
+}
+
+.botao-secundario {
+    margin-top: 0;
+}
+
+.voltar {
+    text-align: center;
+    margin-top: 25px;
+}
+
+
+/* =========================================
+9. IMAGEM DA PÁGINA INICIAL
+========================================= */
+
+.foto-inicio {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 25px auto;
+}
+
+
+/* =========================================
+10. ANIMAÇÕES
+========================================= */
+
+@keyframes flutuar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes brilho-vermelho {
+    0%, 100% {
+        box-shadow:
+            0 8px 25px rgba(0, 0, 0, 0.40),
+            0 0 12px rgba(255, 48, 48, 0.25);
+    }
+
+    50% {
+        box-shadow:
+            0 12px 35px rgba(0, 0, 0, 0.50),
+            0 0 28px rgba(255, 48, 48, 0.65);
+    }
+}
+
+
+/* =========================================
+11. IMAGEM FLUTUANTE DA PÁGINA INICIAL
+========================================= */
+
+.foto-inicio img {
+    display: block;
+
+    width: 100%;
+    max-width: 280px;
+    height: 350px;
+
+    object-fit: cover;
+    object-position: center top;
+
+    border: 3px solid var(--vermelho-claro);
+    border-radius: 18px;
+
+    animation:
+        flutuar 4s ease-in-out infinite,
+        brilho-vermelho 4s ease-in-out infinite;
+}
+
+.foto-inicio figcaption {
+    margin-top: 22px;
+
+    color: var(--texto-secundario);
+
+    text-align: center;
+    font-size: 14px;
+}
+
+
+/* =========================================
+12. IMAGENS E LEGENDAS GERAIS
+========================================= */
+
+.imagem-sobre,
+.foto-perfil {
+    width: 100%;
+
+    text-align: center;
+
+    margin: 20px auto 25px;
+}
+
+.imagem-sobre img {
+    display: block;
+
+    width: 100%;
+    max-width: 300px;
+    height: 390px;
+
+    margin: 0 auto;
+
+    object-fit: cover;
+    object-position: center top;
+
+    border: 2px solid var(--vermelho-claro);
+    border-radius: 16px;
+
+    box-shadow: 0 8px 25px var(--brilho);
+}
+
+.foto-perfil img {
+    display: block;
+
+    width: 100%;
+    max-width: 220px;
+    height: 260px;
+
+    object-fit: cover;
+    object-position: center top;
+
+    margin: 0 auto;
+
+    border: 2px solid var(--vermelho-claro);
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px var(--brilho);
+}
+
+figcaption {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+
+/* =========================================
+13. PÁGINA SOBRE MIM
+========================================= */
+
+/* ORGANIZAÇÃO GERAL */
+
+.pagina-sobre {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+    padding: 35px 0;
+}
+
+
+/* APRESENTAÇÃO PESSOAL */
+
+.sobre-apresentacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 35px;
+
+    padding: 30px;
+    margin-bottom: 30px;
+
+    background: var(--fundo-card);
+
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+
+    box-shadow: 0 0 15px var(--brilho);
+}
+
+.sobre-texto {
+    flex: 1;
+    min-width: 0;
+}
+
+.sobre-texto h2 {
+    color: var(--vermelho-claro);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.sobre-texto p {
+    color: var(--branco);
+    line-height: 1.8;
+    text-align: justify;
+}
+
+
+/* FOTO DA PÁGINA SOBRE */
+
+.sobre-apresentacao .foto-perfil {
+    width: auto;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.sobre-apresentacao .foto-perfil img {
+    width: 230px;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+
+    border: 3px solid var(--vermelho-escuro);
+    border-radius: 12px;
+
+    box-shadow: 0 0 15px var(--brilho);
+}
+
+
+/* SEÇÕES DA PÁGINA SOBRE */
+
+.sobre-formacao,
+.sobre-interesses,
+.sobre-objetivos {
+    padding: 30px;
+    margin-bottom: 30px;
+
+    background: var(--fundo-card);
+
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.sobre-formacao h2,
+.sobre-interesses h2,
+.sobre-objetivos h2 {
+    color: var(--vermelho-claro);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.sobre-formacao p,
+.sobre-interesses p,
+.sobre-objetivos p {
+    color: var(--branco);
+    line-height: 1.8;
+    text-align: justify;
+}
+
+
+/* CARTÕES INDIVIDUAIS DE FORMAÇÃO */
+
+.formacao-item {
+    margin: 25px 0;
+    padding: 20px;
+
+    background: rgba(16, 6, 7, 0.75);
+
+    border-left: 4px solid var(--vermelho-claro);
+    border-radius: 8px;
+}
+
+.formacao-item h3 {
+    color: var(--vermelho-luz);
+    margin-bottom: 12px;
+}
+
+.formacao-item p {
+    margin-bottom: 10px;
+}
+
+
+/* TABELA DE INTERESSES DA PÁGINA SOBRE */
+
+.sobre-interesses table {
+    width: 100%;
+    max-width: 100%;
+
+    table-layout: fixed;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+}
+
+.sobre-interesses caption {
+    color: var(--vermelho-luz);
+    font-weight: bold;
+    padding: 12px;
+}
+
+.sobre-interesses th,
+.sobre-interesses td {
+    border: 1px solid var(--vermelho);
+
+    padding: 14px;
+
+    text-align: left;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+}
+
+.sobre-interesses thead th {
+    background-color: var(--vinho);
+    color: var(--branco);
+}
+
+.sobre-interesses tbody td {
+    background-color: rgba(16, 6, 7, 0.85);
+    color: var(--branco);
+}
+
+.sobre-interesses tbody tr:nth-child(even) td {
+    background-color: rgba(139, 0, 0, 0.20);
+}
+
+.sobre-interesses tbody tr:hover td {
+    background-color: rgba(255, 48, 48, 0.22);
+    transition: background-color 0.3s ease;
+}
+
+
+/* =========================================
+14. TABELAS GERAIS
+========================================= */
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 25px auto;
+}
+
+table {
+    width: 100%;
+    max-width: 650px;
+
+    table-layout: fixed;
+
+    border-collapse: collapse;
+
+    margin: 0 auto;
+
+    background-color: rgba(16, 6, 7, 0.90);
+
+    color: var(--branco);
+
+    border: 1px solid var(--vermelho);
+}
+
+/* PROPORÇÃO DAS COLUNAS */
+
+thead th:first-child,
+tbody th {
+    width: 35%;
+}
+
+thead th:last-child {
+    width: 65%;
+}
+
+/* LEGENDA */
+
+caption {
+    color: var(--branco);
+
+    font-size: 16px;
+    font-weight: bold;
+
+    padding: 12px;
+
+    text-align: center;
+}
+
+/* CABEÇALHO */
+
+thead th {
+    background-color: var(--vermelho-escuro);
+
+    color: var(--branco);
+
+    padding: 13px;
+
+    text-align: left;
+
+    border: 1px solid var(--vermelho-claro);
+
+    font-weight: bold;
+}
+
+/* TÍTULOS DAS LINHAS */
+
+tbody th {
+    background-color: rgba(193, 18, 31, 0.30);
+
+    color: var(--branco);
+
+    padding: 13px;
+
+    text-align: left;
+
+    border: 1px solid var(--vermelho);
+
+    font-weight: bold;
+}
+
+/* INFORMAÇÕES */
+
+tbody td {
+    background-color: rgba(37, 9, 13, 0.90);
+
+    color: var(--branco);
+
+    padding: 13px;
+
+    text-align: left;
+
+    border: 1px solid var(--vermelho);
+
+    overflow-wrap: anywhere;
+}
+
+/* EFEITO AO PASSAR O MOUSE */
+
+tbody tr:hover th,
+tbody tr:hover td {
+    background-color: rgba(255, 48, 48, 0.22);
+
+    transition: background-color 0.3s ease;
+}
+
+
+/* =========================================
+   15. ÁREA DE CONTATO
+========================================= */
+
+.area-contato {
+    width: 90%;
+    max-width: 850px;
+
+    margin: 40px auto;
+
+    padding: 35px;
+
+    background: rgba(37, 9, 13, 0.92);
+
+    border: 1px solid var(--borda);
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.45),
+        0 0 20px var(--brilho);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.area-contato h2 {
+    text-align: center;
+
+    color: var(--vermelho-claro);
+
+    font-size: 27px;
+
+    margin: 0 0 30px;
+
+    text-shadow: 0 0 12px var(--brilho);
+}
+
+
+/* =========================================
+   16. FORMULÁRIO DE CONTATO
+========================================= */
+
+.formulario-contato {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 0;
+}
+
+/* RÓTULOS */
+
+.formulario-contato label {
+    color: var(--texto-secundario);
+
+    font-weight: bold;
+    font-size: 15px;
+
+    margin-top: 8px;
+}
+
+/* CAMPOS DE TEXTO */
+
+.formulario-contato input,
+.formulario-contato textarea,
+.formulario-contato select {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid var(--vermelho-escuro);
+    border-radius: 9px;
+
+    background-color: rgba(16, 6, 7, 0.90);
+
+    color: var(--branco);
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+
+    outline: none;
+
+    transition: all 0.3s ease;
+}
+
+/* ALTURA DOS CAMPOS */
+
+.formulario-contato input {
+    height: 48px;
+}
+
+.formulario-contato textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+/* TEXTO DE EXEMPLO */
+
+.formulario-contato input::placeholder,
+.formulario-contato textarea::placeholder {
+    color: #D9B8B8;
+}
+
+/* FOCO NOS CAMPOS */
+
+.formulario-contato input:focus,
+.formulario-contato textarea:focus,
+.formulario-contato select:focus {
+    border-color: var(--vermelho-claro);
+
+    box-shadow:
+        0 0 10px var(--brilho),
+        inset 0 0 5px rgba(255, 48, 48, 0.08);
+}
+
+/* OPÇÕES DO SELECT */
+
+.formulario-contato select option {
+    background-color: var(--fundo);
+    color: var(--branco);
+}
+
+
+/* =========================================
+   17. CHECKBOX DE AUTORIZAÇÃO
+========================================= */
+
+.formulario-contato .opcao-contato {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    width: 100%;
+
+    margin: 10px 0 20px;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* CAIXA DE MARCAÇÃO */
+
+.formulario-contato .opcao-contato input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+
+    min-width: 18px;
+
+    margin: 0;
+    padding: 0;
+
+    accent-color: var(--vermelho-escuro);
+
+    cursor: pointer;
+    box-shadow: none;
+}
+
+/* TEXTO DO CHECKBOX */
+
+.formulario-contato .opcao-contato label {
+    margin: 0;
+    padding: 0;
+
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+    font-weight: normal;
+
+    line-height: 1.5;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   18. OUTROS ELEMENTOS DE FORMULÁRIO
+========================================= */
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo-formulario label,
+.preferencias legend {
+    color: var(--texto-secundario);
+    font-weight: bold;
+}
+
+.campo-formulario input,
+.campo-formulario select,
+.campo-formulario textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid var(--vermelho);
+    border-radius: 8px;
+
+    background-color: rgba(37, 9, 13, 0.95);
+
+    color: var(--branco);
+
+    font: inherit;
+}
+
+.campo-formulario input::placeholder,
+.campo-formulario textarea::placeholder {
+    color: #D9B8B8;
+}
+
+.campo-formulario textarea {
+    resize: vertical;
+}
+
+.preferencias {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    padding: 15px;
+
+    border: 1px solid var(--vermelho);
+    border-radius: 8px;
+}
+
+.preferencias legend {
+    padding: 0 6px;
+}
+
+.opcao {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+/* =========================================
+   19. BOTÕES DE CONTATO
+========================================= */
+
+.botoes-contato {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.botoes-contato button {
+    padding: 13px 23px;
+
+    border: 1px solid var(--vermelho-claro);
+    border-radius: 9px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vermelho-escuro),
+        var(--vermelho)
+    );
+
+    color: var(--branco);
+
+    font-weight: bold;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    box-shadow: 0 4px 12px var(--brilho);
+}
+
+.botoes-contato button:hover {
+    background: linear-gradient(
+        135deg,
+        var(--vermelho),
+        var(--vermelho-claro)
+    );
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 6px 18px var(--brilho);
+}
+
+
+/* =========================================
+   20. ESPAÇAMENTO DOS TEXTOS - CONTATO
+========================================= */
+
+.mensagem-abertura p,
+.mensagem-final p {
+    padding-left: 45px;
+    padding-right: 45px;
+
+    box-sizing: border-box;
+
+    line-height: 1.8;
+    text-align: left;
+}
+
+
+/* =========================================
+   21. RODAPÉ
+========================================= */
+
+footer {
+    background-color: rgba(16, 6, 7, 0.96);
+
+    padding: 20px;
+
+    text-align: center;
+
+    color: var(--texto-secundario);
+
+    border-top: 2px solid var(--vermelho);
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   22. ACESSIBILIDADE - REDUZIR ANIMAÇÕES
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .foto-inicio img {
+        animation: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+
+/* =========================================
+   23. RESPONSIVIDADE - TABLETS E CELULARES
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* PÁGINA SOBRE */
+
+    .pagina-sobre {
+        width: 94%;
+    }
+
+    .sobre-apresentacao {
+        flex-direction: column-reverse;
+        text-align: center;
+
+        padding: 22px;
+    }
+
+    .sobre-apresentacao .foto-perfil img {
+        width: 190px;
+    }
+
+    .sobre-texto p,
+    .sobre-formacao p,
+    .sobre-interesses p,
+    .sobre-objetivos p {
+        text-align: left;
+    }
+
+    .sobre-formacao,
+    .sobre-interesses,
+    .sobre-objetivos {
+        padding: 22px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    /* CABEÇALHO */
+
+    header {
+        padding: 18px 12px;
+    }
+
+    header h1 {
+        font-size: 27px;
+    }
+
+    nav ul {
+        gap: 18px;
+    }
+
+    nav a {
+        font-size: 15px;
+    }
+
+
+    /* CONTEÚDO */
+
+    main {
+        padding: 25px 12px;
+    }
+
+    .cartao,
+    section.cartao,
+    article.cartao {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+
+    /* IMAGEM INICIAL */
+
+    .foto-inicio img {
+        max-width: 230px;
+        height: 300px;
+    }
+
+
+    /* IMAGENS GERAIS */
+
+    .imagem-sobre img {
+        max-width: 240px;
+        height: 320px;
+    }
+
+    .foto-perfil img {
+        max-width: 190px;
+        height: 230px;
+    }
+
+
+    /* PÁGINA SOBRE */
+
+    .pagina-sobre {
+        width: 96%;
+        padding: 20px 0;
+    }
+
+    .sobre-apresentacao {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .sobre-formacao,
+    .sobre-interesses,
+    .sobre-objetivos {
+        padding: 18px;
+    }
+
+    .formacao-item {
+        padding: 16px;
+    }
+
+    .sobre-interesses table {
+        font-size: 13px;
+    }
+
+    .sobre-interesses th,
+    .sobre-interesses td {
+        padding: 9px 7px;
+    }
+
+
+    /* TABELAS GERAIS */
+
+    .tabela-container {
+        overflow-x: auto;
+    }
+
+    table {
+        max-width: 100%;
+    }
+
+    th,
+    td {
+        padding: 9px;
+        font-size: 13px;
+    }
+
+    caption {
+        font-size: 14px;
+    }
+
+
+    /* BOTÕES GERAIS */
+
+    .botao {
+        padding: 12px 22px;
+        font-size: 15px;
+    }
+
+
+    /* ÁREA DE CONTATO */
+
+    .area-contato {
+        width: 96%;
+        padding: 22px 16px;
+        margin: 25px auto;
+    }
+
+    .area-contato h2 {
+        font-size: 23px;
+    }
+
+
+    /* BOTÕES DE CONTATO */
+
+    .botoes-contato {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .botoes-contato button {
+        width: 100%;
+    }
+
+
+    /* TEXTOS DA PÁGINA DE CONTATO */
+
+    .mensagem-abertura p,
+    .mensagem-final p {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+}
